@@ -1,0 +1,43 @@
+{
+  "name": "Laravel + Redis + RabbitMQ Dev Environment",
+  "dockerComposeFile": [
+    "./docker-compose.yml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  // Customizations for VS Code Workspace
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "php.validate.executablePath": "/usr/local/bin/php",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4,
+        "files.associations": {
+          "*.blade.php": "html"
+        },
+        "emmet.includeLanguages": {
+          "php": "html"
+        },
+        "emmet.triggerExpansionOnTab": true
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  // Forward application and infrastructure ports to local host
+  "forwardPorts": [
+    8000,
+    6379,
+    5672,
+    15672,
+    5432
+  ],
+  // Configure lifecycle hooks for automated workspace setup
+  "postCreateCommand": "composer install"
+  // Connect as default non-root user or root
+  //"remoteUser": "vscode"
+
+}

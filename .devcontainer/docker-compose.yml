@@ -1,0 +1,150 @@
+services:
+  # Main Application Container (Laravel 11 + Node.js React toolchain)
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    image: laravel-react-devcontainer:latest
+    container_name: devcontainer_app
+    restart: unless-stopped
+    tty: true
+    working_dir: /workspace
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    volumes:
+      - ..:/workspace:cached
+      - vendor:/workspace/vendor
+    ports:
+      - "8000:8000"   # Laravel Artisan / Octane Server
+    depends_on:
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      db:
+        condition: service_healthy
+    networks:
+      - dev-network
+
+  # PostgreSQL Database Engine
+  db:
+    image: postgres:16-alpine
+    container_name: devcontainer_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_DATABASE:-laravel}
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-secret}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-postgres}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - dev-network
+
+  # pgAdmin Database Management Tool
+  pgadmin:
+    image: dpage/pgadmin4:9.8
+    container_name: devcontainer_pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@admin.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
+      PGADMIN_REPLACE_SERVERS_ON_STARTUP: "True"
+      # Don't require the user to login
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      # Don't require a "master" password after logging in
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'False'
+    ports:
+      - "8090:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - dev-network
+    configs:
+      - source: pgadmin-pgpass
+        target: /config/pgpass
+        uid: "5050"
+        gid: "5050"
+        mode: 0400
+      - source: pgadmin-servers
+        target: /pgadmin4/servers.json
+        mode: 0444
+
+  # Redis In-Memory Store (Atomic Inventory Locks & High-Speed Cache)
+  redis:
+    image: redis:7-alpine
+    container_name: devcontainer_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - dev-network
+
+  # RabbitMQ AMQP Message Broker with Management Web Console
+  rabbitmq:
+    image: rabbitmq:3.12-management-alpine
+    container_name: devcontainer_rabbitmq
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-guest}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-guest}
+    ports:
+      - "5672:5672"     # AMQP Protocol Port
+      - "15672:15672"   # Management Web Dashboard Port
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:
+  rabbitmq_data:
+  vendor:
+  pgadmin_data:
+
+configs:
+  pgadmin-pgpass:
+    content: |
+      postgres:5432:*:postgres:secret
+  pgadmin-servers:
+    content: |
+      {
+        "Servers": {
+          "1": {
+            "Name": "Local Postgres",
+            "Group": "Servers",
+            "Host": "db",
+            "Port": 5432,
+            "MaintenanceDB": "postgres",
+            "Username": "postgres",
+            "PassFile": "/config/pgpass"
+          }
+        }
+      }
