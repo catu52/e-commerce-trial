@@ -16,9 +16,6 @@ class UserPolicy
 
     /**
      * Determine whether the authenticated user can view any users.
-     *
-     * @param  \App\Models\User  $authenticatedUser
-     * @return bool
      */
     public function viewAny(User $authenticatedUser): bool
     {
@@ -27,22 +24,15 @@ class UserPolicy
 
     /**
      * Determine whether the authenticated user can view the specified user.
-     *
-     * @param  \App\Models\User  $authenticatedUser
-     * @param  \App\Models\User  $targetUser
-     * @return bool
      */
     public function view(User $authenticatedUser, User $targetUser): bool
     {
-        return $authenticatedUser->hasPermission('users.manage') || 
-            $authenticatedUser->id === $targetUser->id; 
+        return $authenticatedUser->hasPermission('users.manage') ||
+            $authenticatedUser->id === $targetUser->id;
     }
 
     /**
      * Determine whether the authenticated user can create a new user.
-     *
-     * @param  \App\Models\User  $authenticatedUser
-     * @return bool
      */
     public function create(User $authenticatedUser): bool
     {
@@ -51,10 +41,6 @@ class UserPolicy
 
     /**
      * Determine whether the authenticated user can update the specified user.
-     *
-     * @param  \App\Models\User  $authenticatedUser
-     * @param  \App\Models\User  $targetUser
-     * @return bool
      */
     public function update(User $authenticatedUser, User $targetUser): bool
     {
@@ -63,10 +49,6 @@ class UserPolicy
 
     /**
      * Determine whether the authenticated user can delete the specified user.
-     *
-     * @param  \App\Models\User  $authenticatedUser
-     * @param  \App\Models\User  $targetUser
-     * @return bool
      */
     public function delete(User $authenticatedUser, User $targetUser): bool
     {

@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -12,10 +11,6 @@ class UserService
 {
     /**
      * Get a paginated list of users, optionally filtered by a search term.
-     *
-     * @param  int  $perPage
-     * @param  string|null  $search
-     * @return \Illuminate\Pagination\LengthAwarePaginator
      */
     public function getPaginatedUsers(int $perPage = 15, ?string $search = null): LengthAwarePaginator
     {
@@ -24,7 +19,7 @@ class UserService
         return User::with(['roles', 'permissions'])
             ->when($search, function ($query, $search) {
                 $query->where('name', 'ilike', "%{$search}%")
-                      ->orWhere('email', 'ilike', "%{$search}%");
+                    ->orWhere('email', 'ilike', "%{$search}%");
             })
             ->latest() // Order by the most recently created users first
             ->paginate($perPage);
@@ -32,13 +27,10 @@ class UserService
 
     /**
      * Create a new user with the given data.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
      */
     public function createUser(array $data): User
     {
-        // Start a database transaction to ensure atomicity 
+        // Start a database transaction to ensure atomicity
         // of user creation and role/permission assignment.
         return DB::transaction(function () use ($data) {
             $user = User::create([
@@ -48,7 +40,7 @@ class UserService
             ]);
 
             // Assign roles to the newly created user.
-            if (!empty($data['roles'])) {
+            if (! empty($data['roles'])) {
                 $user->roles()->sync($data['roles']);
             }
 
@@ -63,14 +55,10 @@ class UserService
 
     /**
      * Update the specified user with the given data.
-     *
-     * @param  \App\Models\User  $user
-     * @param  array  $data
-     * @return \App\Models\User
      */
     public function updateUser(User $user, array $data): User
     {
-        // Start a database transaction to ensure atomicity 
+        // Start a database transaction to ensure atomicity
         // of user update and role/permission assignment.
         return DB::transaction(function () use ($user, $data) {
             $updateData = [];
@@ -83,11 +71,11 @@ class UserService
                 $updateData['email'] = $data['email'];
             }
 
-            if (!empty($data['password'])) {
+            if (! empty($data['password'])) {
                 $updateData['password'] = Hash::make($data['password']);
             }
 
-            if (!empty($updateData)) {
+            if (! empty($updateData)) {
                 $user->update($updateData);
             }
 
@@ -105,17 +93,15 @@ class UserService
 
     /**
      * Delete the specified user.
-     *
-     * @param  \App\Models\User  $user
-     * @return bool
      */
     public function deleteUser(User $user): bool
     {
-        // Start a database transaction to ensure atomicity 
+        // Start a database transaction to ensure atomicity
         // of user deletion and role/permission detachment.
         return DB::transaction(function () use ($user) {
             $user->roles()->detach(); // Detach all roles from the user before deletion.
             $user->permissions()->detach(); // Detach all permissions from the user before deletion.
+
             return $user->delete(); // Delete the user after detaching roles and permissions.
         });
     }

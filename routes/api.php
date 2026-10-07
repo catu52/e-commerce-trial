@@ -1,16 +1,12 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-
-
 use App\Http\Controllers\ClientAuthController;
-use App\Http\Controllers\StaffAuthController;
-
 use App\Http\Controllers\CMS\OrderController;
 use App\Http\Controllers\CMS\ProductController;
 use App\Http\Controllers\CMS\RoleController;
 use App\Http\Controllers\CMS\UserController;
+use App\Http\Controllers\StaffAuthController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +32,7 @@ Route::prefix('v1/staff')->group(function () {
 */
 Route::middleware(['auth:sanctum_clients'])->prefix('v1/client')->group(function () {
     Route::post('/logout', [ClientAuthController::class, 'logout']);
-    
+
     // Flash sale reservation endpoints will go here...
 });
 

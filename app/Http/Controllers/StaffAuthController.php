@@ -2,22 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Http\Requests\StaffLoginRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
-use App\Http\Requests\StaffLoginRequest;
 
 class StaffAuthController extends Controller
 {
     /**
-     * Login an existing staff user and return a JSON response with 
+     * Login an existing staff user and return a JSON response with
      * the staff user data and authentication token.
-     *
-     * @param StaffLoginRequest $request
-     * @return JsonResponse
      */
     public function login(StaffLoginRequest $request): JsonResponse
     {
@@ -41,21 +37,18 @@ class StaffAuthController extends Controller
         return response()->json([
             'message' => 'Logged in successfully',
             'staff' => $staff,
-            'token' => $token
+            'token' => $token,
         ]);
     }
 
     /**
      * Get the profile of the currently authenticated staff user.
-     *
-     * @param Request $request
-     * @return JsonResponse
      */
     public function profile(Request $request): JsonResponse
     {
         // Load the roles and permissions for the currently authenticated staff user
         $user = $request->user()->load('roles.permissions');
-        
+
         // Extract the unique permissions from the user's roles
         $permissions = $user->roles->flatMap(function ($role) {
             return $role->permissions;
@@ -70,9 +63,6 @@ class StaffAuthController extends Controller
 
     /**
      * Logout the currently authenticated staff user and revoke their authentication token.
-     *
-     * @param Request $request
-     * @return JsonResponse
      */
     public function logout(Request $request): JsonResponse
     {
@@ -81,7 +71,7 @@ class StaffAuthController extends Controller
 
         // Return a JSON response indicating successful logout
         return response()->json([
-            'message' => 'Logged out successfully'
+            'message' => 'Logged out successfully',
         ]);
     }
 }

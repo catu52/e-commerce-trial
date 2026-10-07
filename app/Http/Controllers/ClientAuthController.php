@@ -2,23 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Http\Requests\ClientLoginRequest;
+use App\Http\Requests\ClientRegisterRequest;
 use App\Models\Client;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
-use App\Http\Requests\ClientRegisterRequest;
-use App\Http\Requests\ClientLoginRequest;
 
 class ClientAuthController extends Controller
 {
     /**
-     * Register a new client and return a JSON response with 
+     * Register a new client and return a JSON response with
      * the client data and authentication token.
-     *
-     * @param ClientRegisterRequest $request
-     * @return JsonResponse
      */
     public function register(ClientRegisterRequest $request): JsonResponse
     {
@@ -38,18 +34,15 @@ class ClientAuthController extends Controller
 
         // Return a JSON response with the client data and authentication token
         return response()->json([
-            'message' => 'Client registered successfully', 
+            'message' => 'Client registered successfully',
             'client' => $client,
-            'token' => $token
-        ],201);
+            'token' => $token,
+        ], 201);
     }
 
     /**
-     * Login an existing client and return a JSON response with 
+     * Login an existing client and return a JSON response with
      * the client data and authentication token.
-     *
-     * @param ClientLoginRequest $request
-     * @return JsonResponse
      */
     public function login(ClientLoginRequest $request): JsonResponse
     {
@@ -73,15 +66,12 @@ class ClientAuthController extends Controller
         return response()->json([
             'message' => 'Logged in successfully',
             'client' => $client,
-            'token' => $token
+            'token' => $token,
         ]);
     }
 
     /**
      * Logout the currently authenticated client and revoke their authentication token.
-     *
-     * @param Request $request
-     * @return JsonResponse
      */
     public function logout(Request $request): JsonResponse
     {
@@ -90,7 +80,7 @@ class ClientAuthController extends Controller
 
         // Return a JSON response indicating successful logout
         return response()->json([
-            'message' => 'Logged out successfully'
+            'message' => 'Logged out successfully',
         ]);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\CMS;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use App\Models\User;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreUserRequest extends FormRequest

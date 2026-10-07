@@ -3,16 +3,11 @@
 namespace App\Models;
 
 use App\Contracts\PurchasableInterface;
-
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-
-use App\Models\FlashSale;
-use App\Models\Order;
-
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 
 #[Fillable(['name', 'sku', 'description', 'base_price', 'stock_quantity'])]
 
@@ -32,8 +27,6 @@ class Product extends Model implements PurchasableInterface
 
     /**
      * Get the flash sales associated with the product.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function flashSales(): HasMany
     {
@@ -42,8 +35,6 @@ class Product extends Model implements PurchasableInterface
 
     /**
      * Get the orders associated with the product.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function orders(): HasMany
     {
@@ -54,9 +45,6 @@ class Product extends Model implements PurchasableInterface
 
     /**
      * Scope a query to only include products that are in stock.
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeInStock(Builder $query): Builder
     {

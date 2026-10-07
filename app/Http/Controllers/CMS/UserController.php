@@ -14,18 +14,14 @@ class UserController extends Controller
 {
     /**
      * UserController constructor.
-     *
-     * @param  \App\Services\UserService  $userService
      */
-    public function __construct(protected UserService $userService) {
+    public function __construct(protected UserService $userService)
+    {
         $this->authorizeResource(User::class, 'user');
     }
 
     /**
      * Display a paginated list of users.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
      */
     public function index(Request $request): JsonResponse
     {
@@ -40,9 +36,6 @@ class UserController extends Controller
 
     /**
      * Store a newly created user in the system.
-     *
-     * @param  \App\Http\Requests\Cms\StoreUserRequest  $request
-     * @return \Illuminate\Http\JsonResponse
      */
     public function store(StoreUserRequest $request): JsonResponse
     {
@@ -56,9 +49,6 @@ class UserController extends Controller
 
     /**
      * Display the specified user.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\JsonResponse
      */
     public function show(User $user): JsonResponse
     {
@@ -69,10 +59,6 @@ class UserController extends Controller
 
     /**
      * Update the specified user in the system.
-     *
-     * @param  \App\Http\Requests\Cms\UpdateUserRequest  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\JsonResponse
      */
     public function update(UpdateUserRequest $request, User $user): JsonResponse
     {
@@ -86,9 +72,6 @@ class UserController extends Controller
 
     /**
      * Remove the specified user from the system.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(User $user): JsonResponse
     {

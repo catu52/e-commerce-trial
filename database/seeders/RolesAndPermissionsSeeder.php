@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -78,7 +77,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'products.manage',
             'orders.view',
             'reservations.inspect',
-            'system.metrics'
+            'system.metrics',
         ];
         foreach ($managerPermissions as $permName) {
             if (isset($permissionMap[$permName])) {

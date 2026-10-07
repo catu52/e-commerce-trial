@@ -12,8 +12,6 @@ class RoleController extends Controller
 {
     /**
      * Display a listing of roles with their permissions.
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function index(): JsonResponse
     {
@@ -26,8 +24,6 @@ class RoleController extends Controller
 
     /**
      * Display a listing of all permissions.
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function permissions(): JsonResponse
     {
@@ -37,12 +33,9 @@ class RoleController extends Controller
             'permissions' => $permissions,
         ]);
     }
+
     /**
      * Sync permissions for the specified role.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Role  $role
-     * @return \Illuminate\Http\JsonResponse
      */
     public function syncPermissions(Request $request, Role $role): JsonResponse
     {

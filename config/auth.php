@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\User;
 use App\Models\Client;
+use App\Models\User;
 
 return [
 
@@ -48,7 +48,7 @@ return [
             'provider' => 'users',
         ],
 
-        //Customers
+        // Customers
         'client' => [
             'driver' => 'session',
             'provider' => 'clients',
@@ -85,7 +85,7 @@ return [
         'clients' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_CLIENT_MODEL', Client::class),
-        ]
+        ],
     ],
 
     /*

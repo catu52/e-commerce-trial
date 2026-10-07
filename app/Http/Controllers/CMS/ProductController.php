@@ -15,16 +15,11 @@ class ProductController extends Controller
 {
     /**
      * ProductController constructor.
-     *
-     * @param  \App\Services\ProductStockService  $stockService
      */
     public function __construct(protected ProductStockService $stockService) {}
 
     /**
      * Display a paginated list of products.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
      */
     public function index(Request $request): JsonResponse
     {
@@ -39,9 +34,6 @@ class ProductController extends Controller
 
     /**
      * Store a newly created product in the system.
-     *
-     * @param  \App\Http\Requests\Cms\StoreProductRequest  $request
-     * @return \Illuminate\Http\JsonResponse
      */
     public function store(StoreProductRequest $request): JsonResponse
     {
@@ -55,9 +47,6 @@ class ProductController extends Controller
 
     /**
      * Display the specified product.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\JsonResponse
      */
     public function show(Product $product): JsonResponse
     {
@@ -68,10 +57,6 @@ class ProductController extends Controller
 
     /**
      * Adjust the stock of the specified product.
-     *
-     * @param  \App\Http\Requests\Cms\AdjustStockRequest  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\JsonResponse
      */
     public function adjustStock(AdjustStockRequest $request, Product $product): JsonResponse
     {

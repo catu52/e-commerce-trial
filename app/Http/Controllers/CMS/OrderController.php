@@ -13,16 +13,11 @@ class OrderController extends Controller
 {
     /**
      * OrderController constructor.
-     *
-     * @param  \App\Services\OrderCmsService  $orderService
      */
     public function __construct(protected OrderCmsService $orderService) {}
 
     /**
      * Display a paginated list of orders.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
      */
     public function index(Request $request): JsonResponse
     {
@@ -43,10 +38,6 @@ class OrderController extends Controller
 
     /**
      * Display the specified order.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\JsonResponse
      */
     public function show(Request $request, Order $order): JsonResponse
     {
@@ -62,10 +53,6 @@ class OrderController extends Controller
 
     /**
      * Refund the specified order.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\JsonResponse
      */
     public function refund(Request $request, Order $order): JsonResponse
     {

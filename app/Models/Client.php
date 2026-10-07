@@ -2,16 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
-
-
-use Illuminate\Database\Eloquent\Attributes\Fillable;
-use Illuminate\Database\Eloquent\Attributes\Hidden;
 
 // Attributes for mass assignment and hidden fields
 #[Fillable(['first_name', 'last_name', 'email', 'password', 'phone'])]
@@ -20,7 +17,7 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 
 class Client extends Authenticatable
 {
-    use HasFactory, Notifiable, HasApiTokens;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * Get the attributes that should be cast.
@@ -41,5 +38,4 @@ class Client extends Authenticatable
     {
         return $this->hasMany(Reservation::class);
     }
-
 }

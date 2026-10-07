@@ -12,27 +12,20 @@ class ProductStockService
 {
     /**
      * Get a paginated list of products, optionally filtered by a search term.
-     *
-     * @param  int  $perPage
-     * @param  string|null  $search
-     * @return \Illuminate\Pagination\LengthAwarePaginator
      */
     public function getPaginatedProducts(int $perPage = 15, ?string $search = null): LengthAwarePaginator
     {
         // Get a paginated list of products, optionally filtered by a search term.
         return Product::when($search, function ($query, $search) {
-                $query->where('name', 'ilike', "%{$search}%")
-                      ->orWhere('sku', 'ilike', "%{$search}%");
-            })
+            $query->where('name', 'ilike', "%{$search}%")
+                ->orWhere('sku', 'ilike', "%{$search}%");
+        })
             ->latest() // Order by the most recently created products first
             ->paginate($perPage);
     }
 
     /**
      * Create a new product with the given data.
-     *
-     * @param  array  $data
-     * @return \App\Models\Product
      */
     public function createProduct(array $data): Product
     {
@@ -49,14 +42,9 @@ class ProductStockService
     /**
      * Adjust the stock quantity of the specified product.
      *
-     * @param  \App\Models\Product  $product
      * @param  string  $type  ('add', 'subtract', 'set')
-     * @param  int  $quantity
-     * @param  string  $reason
-     * @param  int  $actorUserId
-     * @return \App\Models\Product
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function adjustStock(Product $product, string $type, int $quantity, string $reason, int $actorUserId): Product
     {

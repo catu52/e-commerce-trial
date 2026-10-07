@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\CMS;
 
+use App\Models\Product;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Product;
 
 class StoreProductRequest extends FormRequest
 {
