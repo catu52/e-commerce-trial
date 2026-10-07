@@ -3,8 +3,14 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\StaffAuthController;
+
 use App\Http\Controllers\ClientAuthController;
+use App\Http\Controllers\StaffAuthController;
+
+use App\Http\Controllers\CMS\OrderController;
+use App\Http\Controllers\CMS\ProductController;
+use App\Http\Controllers\CMS\RoleController;
+use App\Http\Controllers\CMS\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,5 +49,20 @@ Route::middleware(['auth:sanctum_users'])->prefix('v1/staff')->group(function ()
     Route::get('/me', [StaffAuthController::class, 'profile']);
     Route::post('/logout', [StaffAuthController::class, 'logout']);
 
-    // Admin and campaign management endpoints will go here...
+    // User & Staff Management
+    Route::apiResource('users', UserController::class);
+
+    // Roles & Permissions Matrix
+    Route::get('/roles', [RoleController::class, 'index']);
+    Route::get('/permissions', [RoleController::class, 'permissions']);
+    Route::post('/roles/{role}/permissions', [RoleController::class, 'syncPermissions']);
+
+    // Products & Stock Management
+    Route::apiResource('products', ProductController::class)->except(['destroy']);
+    Route::post('/products/{product}/adjust-stock', [ProductController::class, 'adjustStock']);
+
+    // Order Fulfillment & CS Operations
+    Route::get('/orders', [OrderController::class, 'index']);
+    Route::get('/orders/{order}', [OrderController::class, 'show']);
+    Route::post('/orders/{order}/refund', [OrderController::class, 'refund']);
 });
