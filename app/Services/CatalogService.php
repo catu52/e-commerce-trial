@@ -16,7 +16,7 @@ class CatalogService
         $search = $filters['search'] ?? null;
 
         return Product::with(['category', 'images'])
-            ->when($category, fn($q) => $q->whereHas('category', function ($cq) use ($category) {
+            ->when($category, fn ($q) => $q->whereHas('category', function ($cq) use ($category) {
                 $cq->where('slug', strtolower($category))->orWhereRaw('lower(name) = ?', [strtolower($category)]);
             }))
             ->when($search, function ($q) use ($search) {
@@ -28,9 +28,9 @@ class CatalogService
                 });
             })
             ->forGender($filters['gender'] ?? null)
-            ->when($filters['featured'] ?? false, fn($q) => $q->where('is_featured', true))
-            ->when($filters['in_stock'] ?? false, fn($q) => $q->inStock())
-            ->when(($filters['on_sale'] ?? false) || ($filters['min_discount'] ?? null), fn($q) => $q->onSale($filters['min_discount'] ?? null))
+            ->when($filters['featured'] ?? false, fn ($q) => $q->where('is_featured', true))
+            ->when($filters['in_stock'] ?? false, fn ($q) => $q->inStock())
+            ->when(($filters['on_sale'] ?? false) || ($filters['min_discount'] ?? null), fn ($q) => $q->onSale($filters['min_discount'] ?? null))
             ->orderBy('id')
             ->paginate($perPage);
     }
