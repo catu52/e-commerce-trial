@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use App\Enums\ProductGender;
 use App\Models\Product;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use InvalidArgumentException;
 
 class ProductStockService
@@ -13,13 +15,14 @@ class ProductStockService
     /**
      * Get a paginated list of products, optionally filtered by a search term.
      */
-    public function getPaginatedProducts(int $perPage = 15, ?string $search = null): LengthAwarePaginator
+    public function getPaginatedProducts(int $perPage = 15, ?string $search = null, ?string $gender = null): LengthAwarePaginator
     {
-        // Get a paginated list of products, optionally filtered by a search term.
-        return Product::when($search, function ($query, $search) {
-            $query->where('name', 'ilike', "%{$search}%")
-                ->orWhere('sku', 'ilike', "%{$search}%");
+        // Get a paginated list of products, optionally filtered by a search term and gender.
+        return Product::with(['category', 'images'])->when($search, function ($query, $search) {
+            $query->where(fn ($q) => $q->where('name', 'ilike', "%{$search}%")
+                ->orWhere('sku', 'ilike', "%{$search}%"));
         })
+            ->when($gender, fn ($query, $gender) => $query->where('gender', $gender))
             ->latest() // Order by the most recently created products first
             ->paginate($perPage);
     }
@@ -30,13 +33,64 @@ class ProductStockService
     public function createProduct(array $data): Product
     {
         // Create a new product with the given data.
-        return Product::create([
+        $product = Product::create([
             'sku' => $data['sku'],
             'name' => $data['name'],
             'description' => $data['description'] ?? null,
             'base_price' => $data['base_price'],
             'stock_quantity' => $data['stock_quantity'],
+            'slug' => $data['slug'] ?? $this->uniqueSlug($data['name']),
+            'code' => $data['code'] ?? null,
+            'category_id' => $data['category_id'] ?? null,
+            'sub_category' => $data['sub_category'] ?? null,
+            'tag' => $data['tag'] ?? null,
+            'badge' => $data['badge'] ?? null,
+            'substrate' => $data['substrate'] ?? null,
+            'spec_weight' => $data['spec_weight'] ?? null,
+            'colorway' => $data['colorway'] ?? null,
+            'gender' => $data['gender'] ?? ProductGender::UNISEX->value,
+            'is_featured' => $data['is_featured'] ?? false,
+            'currency' => strtoupper($data['currency'] ?? 'EUR'),
+            'sizes' => $data['sizes'] ?? [],
+            'colors' => $data['colors'] ?? [],
+            'specs' => $data['specs'] ?? null,
+            'headline' => $data['headline'] ?? null,
+            'long_description' => $data['long_description'] ?? null,
+            'care_instructions' => $data['care_instructions'] ?? null,
+            'seo_title' => $data['seo_title'] ?? null,
+            'seo_description' => $data['seo_description'] ?? null,
         ]);
+
+        return $product->load(['category', 'images']);
+    }
+
+    /**
+     * Update the given fields of a product (only keys present in $data are touched).
+     */
+    public function updateProduct(Product $product, array $data): Product
+    {
+        if (isset($data['currency'])) {
+            $data['currency'] = strtoupper($data['currency']);
+        }
+
+        $product->update($data);
+
+        return $product->load(['category', 'images']);
+    }
+
+    /**
+     * Build a URL-safe slug that does not collide with an existing product.
+     */
+    private function uniqueSlug(string $name): string
+    {
+        $base = Str::slug($name) ?: 'product';
+        $slug = $base;
+        $i = 2;
+        while (Product::where('slug', $slug)->exists()) {
+            $slug = $base.'-'.$i++;
+        }
+
+        return $slug;
     }
 
     /**

@@ -8,9 +8,15 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 // Attributes for mass assignment and hidden fields
-#[Fillable(['client_id', 'reservation_id', 'flash_sale_id', 'product_id', 'quantity', 'status', 'total_amount'])]
+#[Fillable([
+    'client_id', 'reservation_id', 'flash_sale_id', 'product_id', 'quantity', 'status', 'total_amount',
+    'order_number', 'email', 'country', 'first_name', 'last_name', 'address', 'apartment', 'postal_code',
+    'city', 'phone', 'delivery_method', 'payment_method', 'promo_code', 'subtotal', 'delivery_cost',
+    'discount', 'currency',
+])]
 
 class Order extends Model
 {
@@ -25,6 +31,9 @@ class Order extends Model
             'quantity' => 'integer',
             'status' => OrderStatus::class,
             'total_amount' => 'float',
+            'subtotal' => 'float',
+            'delivery_cost' => 'float',
+            'discount' => 'float',
         ];
     }
 
@@ -60,6 +69,11 @@ class Order extends Model
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function items(): HasMany
+    {
+        return $this->hasMany(OrderItem::class);
     }
 
     /* ========== Scopes ========== */

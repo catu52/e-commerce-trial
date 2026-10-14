@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Enums\OrderStatus;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -18,7 +19,7 @@ class OrderCmsService
     {
         // Get a paginated list of orders, optionally filtered by status and search term.
         // Build the query with optional filters for status and search term.
-        return Order::with(['client', 'product', 'flashSale'])
+        return Order::with(['client', 'product', 'flashSale', 'items'])
             ->when($status, fn ($q) => $q->where('status', $status))
             ->when($search, function ($query, $search) {
                 $query->whereHas('client', function ($cq) use ($search) {
@@ -53,7 +54,14 @@ class OrderCmsService
             $lockedOrder->markAsFailed(OrderStatus::FAILED);
 
             // Restore base product inventory stock
-            $lockedOrder->product()->increment('stock_quantity', $lockedOrder->quantity);
+            $items = $lockedOrder->items()->get();
+            if ($items->isEmpty()) {
+                $lockedOrder->product()->increment('stock_quantity', $lockedOrder->quantity);
+            } else {
+                foreach ($items as $item) {
+                    Product::whereKey($item->product_id)->increment('stock_quantity', $item->quantity);
+                }
+            }
 
             // Audit log action
             Log::notice("Order #{$lockedOrder->id} cancelled by Staff User #{$actorUserId}", [
@@ -62,7 +70,7 @@ class OrderCmsService
                 'restored_quantity' => $lockedOrder->quantity,
             ]);
 
-            return $lockedOrder->load(['client', 'product']);
+            return $lockedOrder->load(['client', 'product', 'items']);
         });
     }
 }

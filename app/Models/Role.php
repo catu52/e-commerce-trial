@@ -14,6 +14,9 @@ class Role extends Model
 {
     use HasFactory;
 
+    /** Roles referenced by name in code and seeders. */
+    public const BUILT_IN = ['admin', 'manager', 'support'];
+
     /**
      * Many-to-many relationship between roles and users.
      */

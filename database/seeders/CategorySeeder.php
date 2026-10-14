@@ -1,0 +1,24 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
+class CategorySeeder extends Seeder
+{
+    public function run(): void
+    {
+        $categories = collect(json_decode(file_get_contents(__DIR__.'/data/products.json'), true))
+            ->pluck('category')
+            ->unique();
+
+        foreach ($categories as $name) {
+            DB::table('categories')->updateOrInsert(
+                ['slug' => Str::slug($name)],
+                ['name' => $name, 'created_at' => now(), 'updated_at' => now()]
+            );
+        }
+    }
+}

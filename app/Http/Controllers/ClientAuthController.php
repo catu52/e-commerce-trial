@@ -35,7 +35,7 @@ class ClientAuthController extends Controller
         // Return a JSON response with the client data and authentication token
         return response()->json([
             'message' => 'Client registered successfully',
-            'client' => $client,
+            'client' => $this->clientPayload($client),
             'token' => $token,
         ], 201);
     }
@@ -65,9 +65,17 @@ class ClientAuthController extends Controller
         // Return a JSON response with the client data and authentication token
         return response()->json([
             'message' => 'Logged in successfully',
-            'client' => $client,
+            'client' => $this->clientPayload($client),
             'token' => $token,
         ]);
+    }
+
+    /**
+     * Return the currently authenticated client.
+     */
+    public function me(Request $request): JsonResponse
+    {
+        return response()->json(['client' => $this->clientPayload($request->user())]);
     }
 
     /**
@@ -82,5 +90,17 @@ class ClientAuthController extends Controller
         return response()->json([
             'message' => 'Logged out successfully',
         ]);
+    }
+
+    private function clientPayload(Client $client): array
+    {
+        return [
+            'id' => $client->id,
+            'name' => $client->name,
+            'email' => $client->email,
+            'first_name' => $client->first_name,
+            'last_name' => $client->last_name,
+            'phone' => $client->phone,
+        ];
     }
 }

@@ -32,7 +32,17 @@ class Client extends Authenticatable
         ];
     }
 
+    public function getNameAttribute(): string
+    {
+        return trim($this->first_name.' '.$this->last_name);
+    }
+
     /* == Relationships == */
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
 
     public function reservations(): HasMany
     {

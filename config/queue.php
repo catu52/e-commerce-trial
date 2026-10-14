@@ -108,7 +108,28 @@ return [
                     'durable' => true,
                     'auto_delete' => false,
                 ],
+
+                'queue' => [
+                    'name' => env('RABBITMQ_QUEUE', 'order.reservations'),
+                    'passive' => false,
+                    'durable' => true,
+                    'exclusive' => false,
+                    'auto_delete' => false,
+                    'arguments' => [
+                        // Dead-Letter Exchange configuration for retries & failed messages
+                        'x-dead-letter-exchange' => env('RABBITMQ_DLX_EXCHANGE', 'events.dlx'),
+                        'x-dead-letter-routing-key' => env('RABBITMQ_DLQ_NAME', 'order.reservations.dlq'),
+                        'x-message-ttl' => (int) env('RABBITMQ_MESSAGE_TTL', 86400000), // 24 hours in ms
+                    ],
+                ],
             ],
+
+            /*
+             | Dispatch jobs onto RabbitMQ only after the enclosing DB
+             | transaction commits (listeners still explicitly implement
+             | ShouldQueueAfterCommit regardless of this connection setting).
+             */
+            'after_commit' => true,
         ],
 
     ],

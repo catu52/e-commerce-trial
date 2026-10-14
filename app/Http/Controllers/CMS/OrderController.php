@@ -47,7 +47,7 @@ class OrderController extends Controller
         }
 
         return response()->json([
-            'order' => $order->load(['client', 'product', 'flashSale', 'reservation']),
+            'order' => $order->load(['client', 'product', 'flashSale', 'reservation', 'items']),
         ]);
     }
 

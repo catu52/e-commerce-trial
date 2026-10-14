@@ -30,6 +30,10 @@ class RolesAndPermissionsSeeder extends Seeder
 
             // System Administration
             ['name' => 'users.manage', 'display_name' => 'Manage Staff Users', 'description' => 'Manage CMS users, roles, and permissions'],
+            ['name' => 'clients.view', 'display_name' => 'View Customers', 'description' => 'View storefront customer accounts and their orders'],
+            ['name' => 'clients.manage', 'display_name' => 'Manage Customers', 'description' => 'Edit customer details, reset passwords, revoke sessions and delete customers without orders'],
+            ['name' => 'cms.access', 'display_name' => 'Access CMS Panel', 'description' => 'Sign in to the Filament admin panel at /admin'],
+            ['name' => 'content.manage', 'display_name' => 'Manage Content', 'description' => 'Edit the home page and site settings in the CMS'],
             ['name' => 'system.metrics', 'display_name' => 'View System Metrics', 'description' => 'Access system performance and Queue telemetry'],
         ];
 
@@ -78,6 +82,9 @@ class RolesAndPermissionsSeeder extends Seeder
             'orders.view',
             'reservations.inspect',
             'system.metrics',
+            'cms.access',
+            'content.manage',
+            'clients.view',
         ];
         foreach ($managerPermissions as $permName) {
             if (isset($permissionMap[$permName])) {
@@ -89,7 +96,7 @@ class RolesAndPermissionsSeeder extends Seeder
         }
 
         // Support permissions
-        $supportPermissions = ['flash-sales.view', 'orders.view', 'orders.refund', 'reservations.inspect'];
+        $supportPermissions = ['flash-sales.view', 'orders.view', 'orders.refund', 'reservations.inspect', 'cms.access', 'clients.view', 'clients.manage'];
         foreach ($supportPermissions as $permName) {
             if (isset($permissionMap[$permName])) {
                 DB::table('permission_role')->updateOrInsert([

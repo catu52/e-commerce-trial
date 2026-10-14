@@ -9,16 +9,29 @@ use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class UserController extends Controller
+class UserController extends Controller implements HasMiddleware
 {
+    /**
+     * Maps each resource action to the UserPolicy ability
+     * (replaces authorizeResource, removed from the base controller).
+     */
+    public static function middleware(): array
+    {
+        //
+        return [new Middleware('can:viewAny,'.User::class, only: ['index']),
+            new Middleware('can:view,user', only: ['show']),
+            new Middleware('can:create,'.User::class, only: ['store']),
+            new Middleware('can:update,user', only: ['update']),
+            new Middleware('can:delete,user', only: ['destroy'])];
+    }
+
     /**
      * UserController constructor.
      */
-    public function __construct(protected UserService $userService)
-    {
-        $this->authorizeResource(User::class, 'user');
-    }
+    public function __construct(protected UserService $userService) {}
 
     /**
      * Display a paginated list of users.

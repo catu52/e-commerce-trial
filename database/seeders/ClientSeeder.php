@@ -12,6 +12,13 @@ class ClientSeeder extends Seeder
     {
         $clients = [
             [
+                'first_name' => 'Demo',
+                'last_name' => 'Client',
+                'email' => 'client@example.com',
+                'phone' => '+1555010000',
+                'password' => Hash::make('password'),
+            ],
+            [
                 'first_name' => 'Alice',
                 'last_name' => 'Buyer',
                 'email' => 'alice@example.com',

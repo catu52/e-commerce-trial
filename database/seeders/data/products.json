@@ -1,0 +1,570 @@
+[
+    {
+        "slug": "architectural-boxy-wool-overshirt",
+        "code": "PRT_001",
+        "name": "01 ARCHITECTURAL BOXY WOOL OVERSHIRT",
+        "category": "OVERSHIRTS",
+        "sub_category": "OVERSHIRTS // KNITWEAR",
+        "price": 260,
+        "spec_weight": "480 GSM",
+        "substrate": "BOILED MERINO WOOL",
+        "tag": "NEW ARRIVAL",
+        "badge": "HEAVY 420GSM",
+        "colorway": "PITCH BLACK",
+        "colors": [
+            {
+                "name": "Pitch Black",
+                "hex": "#141414"
+            },
+            {
+                "name": "Stone",
+                "hex": "#d9d4cc"
+            },
+            {
+                "name": "Cobalt",
+                "hex": "#0055ff"
+            }
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "stock": 14,
+        "featured": true,
+        "sku": "SKU-KFT-9402",
+        "gender": "men",
+        "description": "480 GSM virgin double-faced wool. Dense weave holds strict 90-degree shoulder volume without structural fusing. Features custom oxidized alloy buttons and clean dropped hem.",
+        "specs": {
+            "origin": "Milled in Biella, Italy",
+            "weight": "480 GSM",
+            "composition": "100% GOTS Virgin Wool",
+            "care": "Dry clean only / Perchloroethylene solvent"
+        },
+        "gallery": 5
+    },
+    {
+        "slug": "bauhaus-pleated-pant",
+        "code": "PRT_002",
+        "name": "02 BAUHAUS PLEATED PANT",
+        "category": "TROUSERS",
+        "sub_category": "TROUSERS // CARGOS",
+        "price": 195,
+        "spec_weight": "340 GSM",
+        "substrate": "HEAVY COMBED COTTON (380GSM)",
+        "tag": "LIMITED ARCHIVE",
+        "badge": "DOUBLE TWILL",
+        "colorway": "CARBON BLACK",
+        "colors": [
+            {
+                "name": "Carbon Black",
+                "hex": "#1a1a1a"
+            },
+            {
+                "name": "Olive",
+                "hex": "#3d443b"
+            }
+        ],
+        "sizes": [
+            "28",
+            "30",
+            "32",
+            "34",
+            "36"
+        ],
+        "stock": 8,
+        "featured": false,
+        "sku": "SKU-KFT-TR-301",
+        "gender": "women",
+        "description": "High-density Japanese double twill cotton with architectural deep front knife pleats, tapered ankle cuffs, and reinforced bar-tacked belt loops.",
+        "specs": {
+            "origin": "Okayama, Japan",
+            "weight": "340 GSM",
+            "composition": "100% Combed Cotton Twill",
+            "care": "Cold hand wash or dry clean"
+        },
+        "gallery": 1
+    },
+    {
+        "slug": "raw-edge-denim-blouson",
+        "code": "PRT_003",
+        "name": "03 RAW EDGE DENIM BLOUSON",
+        "category": "OUTERWEAR",
+        "sub_category": "OUTERWEAR // JACKETS",
+        "price": 280,
+        "spec_weight": "14.5 OZ",
+        "substrate": "RAW SELVEDGE DENIM (14OZ)",
+        "tag": "CORE CLASSIC",
+        "badge": "14.5 OZ SELVEDGE",
+        "colorway": "DEEP INDIGO",
+        "colors": [
+            {
+                "name": "Deep Indigo",
+                "hex": "#1d263b"
+            },
+            {
+                "name": "Carbon Black",
+                "hex": "#1a1a1a"
+            }
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "stock": 6,
+        "featured": false,
+        "sku": "SKU-KFT-JKT-11",
+        "gender": "men",
+        "description": "Constructed from unsanforized 14.5oz Japanese red-line selvedge denim. Boxy architectural cut featuring exposed copper hardware, raw lapel hem, and dual deep chest slots.",
+        "specs": {
+            "origin": "Kojima, Japan",
+            "weight": "14.5 OZ",
+            "composition": "100% Selvedge Indigo Denim",
+            "care": "Raw wear 6 months before first soak"
+        },
+        "gallery": 1
+    },
+    {
+        "slug": "modular-technical-parka",
+        "code": "PRT_004",
+        "name": "04 MODULAR TECHNICAL PARKA",
+        "category": "OUTERWEAR",
+        "sub_category": "OUTERWEAR // TECHNICAL",
+        "price": 360,
+        "spec_weight": "520 GSM",
+        "substrate": "RIPSTOP NYLON 6.6",
+        "tag": "MODULAR SYSTEM",
+        "badge": "3-IN-1 IPX-6",
+        "colorway": "FOREST OLIVE",
+        "colors": [
+            {
+                "name": "Olive",
+                "hex": "#3d443b"
+            },
+            {
+                "name": "Carbon Black",
+                "hex": "#1a1a1a"
+            }
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "stock": 4,
+        "featured": false,
+        "sku": "SKU-KFT-TR-04",
+        "gender": "men",
+        "description": "Triple-layer laminated ripstop nylon with fully welded IPX-6 seam tape. Detachable chest utility harness and concealed storm hood.",
+        "specs": {
+            "origin": "Osaka, Japan",
+            "weight": "520 GSM",
+            "composition": "100% Cordura Nylon 6.6 3L",
+            "care": "Wipe clean / DWR spray refresh"
+        },
+        "gallery": 1
+    },
+    {
+        "slug": "heavy-rigid-waffle-knit",
+        "code": "PRT_005",
+        "name": "05 HEAVY RIGID WAFFLE KNIT",
+        "category": "KNITWEAR",
+        "sub_category": "KNITWEAR // TOPS",
+        "price": 175,
+        "spec_weight": "580 GSM",
+        "substrate": "HEAVY COMBED COTTON (380GSM)",
+        "tag": "NEW",
+        "badge": "UNBLEACHED",
+        "colorway": "RAW ECRU",
+        "colors": [
+            {
+                "name": "Raw Ecru",
+                "hex": "#f5f0e8"
+            },
+            {
+                "name": "Carbon Black",
+                "hex": "#1a1a1a"
+            }
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "stock": 12,
+        "featured": false,
+        "sku": "SKU-KFT-KN-05",
+        "gender": "women",
+        "description": "Heavyweight thermal waffle knit constructed from unbleached organic cotton yarns. Geometric drop shoulder block with raw edge cuffs.",
+        "specs": {
+            "origin": "Porto, Portugal",
+            "weight": "580 GSM",
+            "composition": "100% Organic Unbleached Cotton",
+            "care": "Machine wash cold delicate"
+        },
+        "gallery": 1
+    },
+    {
+        "slug": "hardware-utility-gilet",
+        "code": "PRT_006",
+        "name": "06 HARDWARE UTILITY GILET",
+        "category": "HARDWARE",
+        "sub_category": "HARDWARE & OBJECTS",
+        "price": 210,
+        "spec_weight": "460 GSM",
+        "substrate": "RIPSTOP NYLON 6.6",
+        "tag": "RESTOCKED",
+        "badge": "BALLISTIC",
+        "colorway": "KLEIN BLUE",
+        "colors": [
+            {
+                "name": "Cobalt",
+                "hex": "#0055ff"
+            },
+            {
+                "name": "Carbon Black",
+                "hex": "#1a1a1a"
+            }
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "stock": 5,
+        "featured": false,
+        "sku": "SKU-KFT-ACC-06",
+        "gender": "unisex",
+        "description": "Tactical zip flight vest crafted from high-tenacity ballistic nylon. Equipped with dual cargo bellow compartments and FIDLOCK magnetic quick releases.",
+        "specs": {
+            "origin": "Berlin Lab, Germany",
+            "weight": "460 GSM",
+            "composition": "1000D Ballistic Cordura",
+            "care": "Spot clean only"
+        },
+        "gallery": 1
+    },
+    {
+        "slug": "tactical-wool-bomber-01",
+        "code": "ED_01",
+        "name": "TACTICAL WOOL BOMBER 01",
+        "category": "OUTERWEAR",
+        "sub_category": "OUTERWEAR • CHARCOAL / YELLOW",
+        "price": 340,
+        "spec_weight": "520 GSM",
+        "substrate": "BOILED MERINO WOOL",
+        "tag": "HOT ISSUE",
+        "badge": "ED_01",
+        "colorway": "CHARCOAL",
+        "colors": [
+            {
+                "name": "Carbon Black",
+                "hex": "#1a1a1a"
+            },
+            {
+                "name": "Signal Yellow",
+                "hex": "#ffcc00"
+            }
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "stock": 4,
+        "featured": false,
+        "sku": "SKU-KFT-BMB-01",
+        "gender": "men",
+        "description": "Heavyweight virgin boiled wool bomber with contrast neon industrial pull tags and matte silver dual sliders.",
+        "specs": {
+            "origin": "Biella, Italy",
+            "weight": "520 GSM",
+            "composition": "100% Boiled Wool",
+            "care": "Dry clean only"
+        },
+        "gallery": 1
+    },
+    {
+        "slug": "articulated-cargo-pant",
+        "code": "ED_02",
+        "name": "ARTICULATED CARGO PANT",
+        "category": "TROUSERS",
+        "sub_category": "BOTTOMS • OLIVE DRAB",
+        "price": 220,
+        "spec_weight": "380 GSM",
+        "substrate": "HEAVY COMBED COTTON (380GSM)",
+        "tag": "NEW CUT",
+        "badge": "ED_02",
+        "colorway": "OLIVE DRAB",
+        "colors": [
+            {
+                "name": "Olive",
+                "hex": "#3d443b"
+            },
+            {
+                "name": "Carbon Black",
+                "hex": "#1a1a1a"
+            }
+        ],
+        "sizes": [
+            "28",
+            "30",
+            "32",
+            "34"
+        ],
+        "stock": 10,
+        "featured": false,
+        "sku": "SKU-KFT-CAR-02",
+        "gender": "men",
+        "description": "Ergonomically pre-bent knee darting with 3D expandable bellows pockets and adjustable webbed ankle cinch straps.",
+        "specs": {
+            "origin": "Okayama, Japan",
+            "weight": "380 GSM",
+            "composition": "100% Military Canvas Cotton",
+            "care": "Machine wash 30C"
+        },
+        "gallery": 1
+    },
+    {
+        "slug": "bauhaus-mock-neck-knit",
+        "code": "ED_03",
+        "name": "BAUHAUS MOCK-NECK KNIT",
+        "category": "KNITWEAR",
+        "sub_category": "KNITWEAR • COBALT / CHALK",
+        "price": 195,
+        "spec_weight": "450 GSM",
+        "substrate": "BOILED MERINO WOOL",
+        "tag": "ARCHIVE 88",
+        "badge": "ED_03",
+        "colorway": "COBALT / CHALK",
+        "colors": [
+            {
+                "name": "Cobalt",
+                "hex": "#0055ff"
+            },
+            {
+                "name": "Raw Ecru",
+                "hex": "#f5f0e8"
+            }
+        ],
+        "sizes": [
+            "M",
+            "L",
+            "XL"
+        ],
+        "stock": 2,
+        "featured": false,
+        "sku": "SKU-KFT-KN-03",
+        "gender": "women",
+        "description": "Geometric split-block pattern inspired by 1923 Weimar exhibits. Architectural rib knit collar maintains height without drooping.",
+        "specs": {
+            "origin": "Munich, Germany",
+            "weight": "450 GSM",
+            "composition": "100% Merino Wool",
+            "care": "Hand wash cold"
+        },
+        "gallery": 1
+    },
+    {
+        "slug": "rigid-chest-rig-bag",
+        "code": "ED_04",
+        "name": "RIGID CHEST RIG BAG",
+        "category": "HARDWARE",
+        "sub_category": "EQUIPMENT • 1000D CORDURA",
+        "price": 145,
+        "spec_weight": "320 GSM",
+        "substrate": "RIPSTOP NYLON 6.6",
+        "tag": "OBJECT LAB",
+        "badge": "ED_04",
+        "colorway": "MATTE BLACK",
+        "colors": [
+            {
+                "name": "Carbon Black",
+                "hex": "#1a1a1a"
+            },
+            {
+                "name": "Signal Yellow",
+                "hex": "#ffcc00"
+            }
+        ],
+        "sizes": [
+            "MODULAR ADJUSTABLE"
+        ],
+        "stock": 15,
+        "featured": false,
+        "sku": "SKU-KFT-BG-04",
+        "gender": "unisex",
+        "description": "Tactical chest harness pack with reinforced foam front cell, water-repellent AquaGuard zips, and aluminum carabiner clip loops.",
+        "specs": {
+            "origin": "Tokyo Lab, Japan",
+            "weight": "320 GSM",
+            "composition": "1000D Invista Cordura",
+            "care": "Wipe clean"
+        },
+        "gallery": 1
+    },
+    {
+        "slug": "kraft-modular-chore-jacket",
+        "code": "CHORE_09",
+        "name": "KRAFT MODULAR CHORE JACKET",
+        "category": "OUTERWEAR",
+        "sub_category": "RAW ECRU // 450GSM JAPANESE DENIM",
+        "price": 320,
+        "spec_weight": "450 GSM",
+        "substrate": "RAW SELVEDGE DENIM (14OZ)",
+        "tag": "ARCHIVE SPEC",
+        "badge": "BATCH #09-BLN",
+        "colorway": "RAW ECRU",
+        "colors": [
+            {
+                "name": "Raw Ecru",
+                "hex": "#f5f0e8"
+            },
+            {
+                "name": "Carbon Black",
+                "hex": "#1a1a1a"
+            }
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "stock": 3,
+        "featured": false,
+        "sku": "SKU-KFT-CHR-09",
+        "gender": "men",
+        "description": "Structured heavyweight chore coat in unbleached Japanese raw ecru denim with oversized tool pockets and industrial gunmetal hardware.",
+        "specs": {
+            "origin": "Kojima, Japan",
+            "weight": "450 GSM",
+            "composition": "100% Selvedge Unbleached Denim",
+            "care": "Dry clean recommended"
+        },
+        "gallery": 1
+    },
+    {
+        "slug": "solid-925-architect-signet-ring",
+        "code": "ACC_99",
+        "name": "SOLID 925 ARCHITECT SIGNET RING",
+        "category": "HARDWARE",
+        "sub_category": "OBJECT // PRECIOUS METAL",
+        "price": 140,
+        "spec_weight": "24 GRAMS",
+        "substrate": "925 STERLING SILVER",
+        "tag": "PRECIOUS METAL",
+        "colorway": "OXIDIZED SILVER",
+        "colors": [
+            {
+                "name": "Raw Silver",
+                "hex": "#d0cbc3"
+            }
+        ],
+        "sizes": [
+            "58",
+            "60",
+            "62",
+            "64"
+        ],
+        "stock": 7,
+        "featured": false,
+        "sku": "SKU-KFT-ACC-99",
+        "gender": "unisex",
+        "description": "Cast in solid 925 sterling silver with brutalist stepped bevel edge and micro-laser engraved serial designation.",
+        "specs": {
+            "origin": "Pforzheim, Germany",
+            "weight": "24 Grams",
+            "composition": "Solid 925 Sterling Silver",
+            "care": "Polish with included micro-fiber cloth"
+        },
+        "gallery": 1
+    },
+    {
+        "slug": "heavy-mockneck-cotton-tee",
+        "code": "MCK_11",
+        "name": "HEAVY MOCKNECK COTTON TEE",
+        "category": "OVERSHIRTS",
+        "sub_category": "BASE LAYER // MERCERIZED",
+        "price": 95,
+        "spec_weight": "320 GSM",
+        "substrate": "HEAVY COMBED COTTON (380GSM)",
+        "tag": "ESSENTIAL",
+        "colorway": "CHALK WHITE",
+        "colors": [
+            {
+                "name": "Raw Ecru",
+                "hex": "#f5f0e8"
+            },
+            {
+                "name": "Carbon Black",
+                "hex": "#1a1a1a"
+            }
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "stock": 20,
+        "featured": false,
+        "sku": "SKU-KFT-MCK-11",
+        "gender": "women",
+        "description": "320 GSM heavy combed cotton jersey with mercerized sheen, drop shoulder seams, and dense ribbed mock-neck collar.",
+        "specs": {
+            "origin": "Porto, Portugal",
+            "weight": "320 GSM",
+            "composition": "100% Mercerized Cotton",
+            "care": "Cold wash"
+        },
+        "gallery": 1
+    },
+    {
+        "slug": "square-toe-lug-derby",
+        "code": "FT_08",
+        "name": "SQUARE-TOE LUG DERBY",
+        "category": "HARDWARE",
+        "sub_category": "FOOTWEAR // LEATHER",
+        "price": 380,
+        "spec_weight": "1200 GRAMS",
+        "substrate": "BOX CALF LEATHER",
+        "tag": "ATELIER RUN",
+        "colorway": "PITCH BLACK",
+        "colors": [
+            {
+                "name": "Carbon Black",
+                "hex": "#1a1a1a"
+            }
+        ],
+        "sizes": [
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45"
+        ],
+        "stock": 4,
+        "featured": false,
+        "sku": "SKU-KFT-FT-08",
+        "gender": "men",
+        "description": "Architectural chisel-toe derby in full-grain French box calf leather mounted on aggressive Vibram commando lug soles.",
+        "specs": {
+            "origin": "Civitanova Marche, Italy",
+            "weight": "1200 Grams Pair",
+            "composition": "100% French Calfskin & Vibram Rubber",
+            "care": "Clean with natural beeswax balm"
+        },
+        "gallery": 1
+    }
+]

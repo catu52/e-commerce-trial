@@ -12,7 +12,7 @@ class AdjustStockRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()?->can('products.manage') ?? false;
+        return $this->user()?->hasPermission('products.manage') ?? false;
     }
 
     /**
