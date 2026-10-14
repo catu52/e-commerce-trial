@@ -30,6 +30,16 @@ jobs:
           --health-timeout=5s
           --health-retries=5
 
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd="redis-cli ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     env:
       DB_CONNECTION: pgsql
       DB_HOST: 127.0.0.1
@@ -37,6 +47,9 @@ jobs:
       DB_DATABASE: laravel
       DB_USERNAME: postgres
       DB_PASSWORD: secret
+      REDIS_CLIENT: phpredis
+      REDIS_HOST: 127.0.0.1
+      REDIS_PORT: 6379
 
     steps:
       - name: Checkout code
@@ -49,6 +62,7 @@ jobs:
         with:
           php-version: '8.3'
           tools: composer:v2
+          extensions: redis
           coverage: none
 
       - name: Setup Node
